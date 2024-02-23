@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = pageLoad;
+	function pageLoad() {
+		//alert("hi"); 이것은 팝업이 아니라 경고창!
+		notShowPop = getCookieValue();
+		console.log("notShowPop: " + notShowPop);
+		console.log("")
+		if(notShowPop!="true") {
+			window.open("popup.html", "pop", "width=400, height=350");
+		}
+	}
+
+	//쿠키읽어오는 함수
+	function getCookieValue() {
+
+		var result = "false";		
+		var cookie = document.cookie;
+		console.log(cookie);
+		if (document.cookie != "") {
+			var cookies = cookie.split(';'); //수정1
+			for (var i = 0; i < cookie.length; i++) {
+				element = cookie[i].split("=");
+				value = element[0];
+				value = value.replace(/^\s*/, ''); //자바스크립트 정규 표현식
+				if (value == "notShowPop") {
+					result = element[1];
+				}
+			}
+		}
+
+		return result;
+	}
+
+	function deleteCookie() {
+		document.cookie = "notShowPop=" + "false" + ";path=/;expires=-1";
+	}
+</script>
+</head>
+<body>
+	팝업창 나와라
+
+	<form>
+		<input type="button" value="쿠키삭제" onClick="deleteCookie()">
+	</form>
+</body>
+</html>

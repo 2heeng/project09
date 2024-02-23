@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function setPopupStart(obj){
+	
+	//console.log(obj.checked);
+	if(obj.checked){
+		var expireDate = new Date();
+		var days = 1;
+		console.log("obj.checked: "+obj.checked);
+		console.log(typeof(obj.checked));
+		//console.log(expireDate.getDate()+1);
+		expireDate.setDate(expireDate.getDate()+days);
+		document.cookie="notShowPop="+"true"+";path=/; expires="+expireDate.toGMTString();
+		console.log("쿠키"+document.cookie);
+		//window.close();
+	}
+}
+</script>
+</head>
+<body>
+이것은 팝업이로다
+<br><br><br><br><br><br><br>
+<form>
+<input type="checkbox" onClick="setPopupStart(this)">오늘 하루동안 보지 않기
+</form>
+</body>
+</html>
