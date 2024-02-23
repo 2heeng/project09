@@ -11,7 +11,7 @@
 		console.log("notShowPop: " + notShowPop);
 		console.log("")
 		if(notShowPop!="true") {
-			window.open("popup.html", "pop", "width=400, height=350");
+			window.open("popup.html", "pop", "width=400, height=350,history=no,resizable=no,status=no,scrollbars=yes,menubar=no");
 		}
 	}
 
@@ -19,10 +19,10 @@
 	function getCookieValue() {
 
 		var result = "false";		
-		var cookie = document.cookie;
+		
 		console.log(cookie);
 		if (document.cookie != "") {
-			var cookies = cookie.split(';'); //수정1
+			var cookie = document.cookie.split(';'); //수정1
 			for (var i = 0; i < cookie.length; i++) {
 				element = cookie[i].split("=");
 				value = element[0];
